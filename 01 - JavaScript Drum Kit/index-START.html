@@ -61,7 +61,7 @@
                 window.addEventListener("keydown", playHandler);
 
                 function playHandler(e) {
-                    console.log(e);
+                    // console.log(e);
                     // 拿到音樂dom，play
                     const audio = document.querySelector(`audio[data-key="${e.keyCode}"]`);
                     // 當是這個audio才會執行
@@ -73,7 +73,9 @@
                     }
                     // 拿到div 加class樣式
                     const key = document.querySelector(`div[data-key="${e.keyCode}"]`);
-                    key.classList.add("playing");
+                    if (key) {
+                        key.classList.add("playing");
+                    }
                 }
 
                 // 把所有我要的key拿到
