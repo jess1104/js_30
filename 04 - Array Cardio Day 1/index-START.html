@@ -88,7 +88,7 @@
 
             // Array.prototype.sort()
             // 3. Sort the inventors by birthdate, oldest to youngest
-            // 排序是以 "相減後" -1,0,1...去排序
+            // 排序是以 "相減後" <0,0,>0...去排序
 
             let sort = inventors.sort((a, b) => a.year - b.year);
 
@@ -96,6 +96,17 @@
 
             // Array.prototype.reduce()
             // 4. How many years did all the inventors live all together?
+            // 全部歲數加總
+            // 1.forEach
+            let total = 0;
+            inventors.forEach((item) => {
+                total += item.passed - item.year;
+            });
+            // console.log(total);
+            let total2 = inventors.reduce((total, item) => {
+                return total + item.passed - item.year;
+            }, 0);
+            // console.log(total2);
 
             // 5. Sort the inventors by years lived
 
