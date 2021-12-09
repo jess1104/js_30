@@ -1,46 +1,77 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <title>Console Tricks!</title>
-</head>
-<body>
+    <head>
+        <meta charset="UTF-8" />
+        <title>Console Tricks!</title>
+    </head>
+    <body>
+        <p onClick="makeGreen()">×BREAK×DOWN×</p>
 
-  <p onClick="makeGreen()">×BREAK×DOWN×</p>
+        <script>
+            function makeGreen() {
+                const p = document.querySelector("p");
+                p.style.color = "#BADA55";
+                p.style.fontSize = "50px";
+            }
 
-  <script>
-    const dogs = [{ name: 'Snickers', age: 2 }, { name: 'hugo', age: 8 }];
+            // Regular
+            let obj = { name: `小明` };
+            console.log(obj);
+            console.log(typeof obj.name);
+            let showFun = function () {
+                console.log("aaa");
+            };
+            console.log(showFun);
 
-    function makeGreen() {
-      const p = document.querySelector('p');
-      p.style.color = '#BADA55';
-      p.style.fontSize = '50px';
-    }
+            // Interpolated 內插
+            // log裡面有style用 %C
+            console.log("%c住手", "color:red;font-size:60px");
+            // %s string; %f float; %d 整數
+            console.log("num: %d", 3.45);
+            console.log("num: %f", 3.45);
 
-    // Regular
+            // Styled
 
-    // Interpolated
-
-    // Styled
-
-    // warning!
-
-    // Error :|
-
-    // Info
-
-    // Testing
-
-    // clearing
-
-    // Viewing DOM Elements
-
-    // Grouping together
-
-    // counting
-
-    // timing
-
-  </script>
-</body>
+            // warning!
+            console.warn("警告");
+            // Error :|
+            console.error("問題");
+            // Info
+            // firefox會有!圖示
+            console.info("hello");
+            // Testing
+            console.assert(false, "1前面測試沒通過");
+            console.assert(0, "2前面測試沒通過");
+            console.assert(NaN, "3前面測試沒通過");
+            console.assert(null, "4前面測試沒通過");
+            console.assert(undefined, "5前面測試沒通過");
+            console.assert(!1, "6前面測試沒通過");
+            // clearing
+            // ctrl+L
+            // Viewing DOM Elements
+            let p = document.querySelector("p");
+            console.log(p);
+            console.dir(p);
+            // Grouping together
+            const dogs = [
+                { name: "Snickers", age: 2 },
+                { name: "hugo", age: 8 },
+            ];
+            console.table(dogs);
+            // 可以只看某個key的值
+            console.table(dogs, ["name"]);
+            // counting
+            console.count("count算有幾次");
+            console.count("count算有幾次");
+            console.count("count算有幾次");
+            // timing
+            console.time("fetching data毫秒");
+            fetch("https://api.github.com/users/wesbos")
+                .then((data) => data.json())
+                .then((data) => {
+                    console.timeEnd("fetching data毫秒");
+                    console.log(data);
+                });
+        </script>
+    </body>
 </html>
